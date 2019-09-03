@@ -47,29 +47,36 @@ Hooks:
 - This section is required only if you are running scripts or Lambda validation functions as part of the deployment.
 
 Hook Categories:
-Application Stop: Gracefully stop the application in preparation for deploying the new revision.
-Download Bundle: The Code Deploy agent copies the file to a temporary location.
-BeforeInstall: Details of any installation script, backing up current revision, decrypting files
-Install: The code deploy agent copies the file from temporary location to correct location
-AfterInstall: Details of any post application scripts e.g configuration tasks, change file permission.
-ApplicationStart: restart any services that were stopped during ApplicationStop
-ValidateService: Details of any test to validate the service
+- Application Stop: Gracefully stop the application in preparation for deploying the new revision.
+- Download Bundle: The Code Deploy agent copies the file to a temporary location.
+- BeforeInstall: Details of any installation script, backing up current revision, decrypting files
+- Install: The code deploy agent copies the file from temporary location to correct location
+- AfterInstall: Details of any post application scripts e.g configuration tasks, change file permission.
+- ApplicationStart: restart any services that were stopped during ApplicationStop
+- ValidateService: Details of any test to validate the service
 
 Then these 3 final hooks are executed for re-registering. They are also executed before beginning.
-BeforeBlockTraffic: Run Tasks on instances before they are deregistered from a load balancer
-BlockTraffic: Deregister instances from a load balancer
-AfterBlockTraffic: Run tasks on instances after they are deregistered from a load balancer
+- BeforeBlockTraffic: Run Tasks on instances before they are deregistered from a load balancer
+- BlockTraffic: Deregister instances from a load balancer
+- AfterBlockTraffic: Run tasks on instances after they are deregistered from a load balancer
 
 ### ECS
+```
 BeforeInstall-->AfterInstall-->AfterAllowTestTraffic-->BeforeAllowTraffic-->AfterAllowTraffic
 (Start, Install, TestTraffic, AllowTraffic, and End)
+```
 
-FOR EC2/On-Premises
+### EC2/On-Premises
 Without Classic Load Balancer
+```
 ApplicationStop -> Before Install -> AfterInstall -> Application Start -> Validate Service
-With Classic Load Balancer
+```
+### Classic Load Balancer
+```
 Block Traffic -> Application STop -> The above shit
-
-FOR LAMBDA
+```
+### LAMBDA
+```
 BeforeAllowTraffic -->  AllowTraffic-->AfterAllowTraffic
 (Start, AllowTraffic, and End )
+```
