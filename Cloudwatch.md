@@ -1,4 +1,4 @@
-# Cloudwatch Metrics
+# CloudWatch Metrics
 
 - It is a service to monitor AWS resources and the application that run on AWS.
 - You can use Amazon CloudWatch Events to detect and react to changes in the state of a pipeline, stage, or action. 
@@ -16,4 +16,7 @@ Available EC2 metrics generally fall into three types:
 - DiskReadBytes/DiskWriteBytes
 - CPUUtilization
 - CPUCreditUsage
+
+# Cloudtrail
+Cloudtrail is a service to track logs, monitor and retain account activity.
 
