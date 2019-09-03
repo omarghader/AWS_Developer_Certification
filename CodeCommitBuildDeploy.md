@@ -18,9 +18,9 @@ It is an automated deployments service which allows you to deploy your applicati
 ### Lambda Deployments 
 the file can be written in YAML or JSON. They contain the following fields:
 
-1.Resources : The name and properties of the Lambda function to deploy.
-2.Version: Reserved for future use - currently the only allowed value is 0.0
-3.Hooks: specifies Lambda function to run at a certain time in the process etc.
+1. Resources : The name and properties of the Lambda function to deploy.
+2. Version: Reserved for future use - currently the only allowed value is 0.0
+3. Hooks: specifies Lambda function to run at a certain time in the process etc.
 There are two hooks allowed:
 
 BeforeAllowTraffic: used to specify the task and function that needs to be excuted before the traffic is routed to the new lambda function
